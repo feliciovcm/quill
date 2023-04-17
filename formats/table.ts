@@ -139,7 +139,7 @@ class TableContainer extends Container {
           value = TableCell.formats(row.children.head.domNode);
         }
         const blot = this.scroll.create(TableCell.blotName, value);
-        row.appendChild(blot);
+        row?.appendChild(blot);
         // @ts-expect-error TODO: parameters of optimize() should be a optional
         blot.optimize(); // Add break blot
       });
@@ -182,7 +182,7 @@ class TableContainer extends Container {
     const row = this.scroll.create(TableRow.blotName) as TableRow;
     body.children.head.children.forEach(() => {
       const cell = this.scroll.create(TableCell.blotName, id);
-      row.appendChild(cell);
+      row?.appendChild(cell);
     });
     const ref = body.children.at(index);
     body.insertBefore(row, ref);

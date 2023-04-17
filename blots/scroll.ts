@@ -106,7 +106,7 @@ class Scroll extends ScrollBlot {
     if (index >= this.length()) {
       if (def == null || this.scroll.query(value, Scope.BLOCK) == null) {
         const blot = this.scroll.create(this.statics.defaultChild.blotName);
-        this.appendChild(blot);
+        this?.appendChild(blot);
         if (def == null && value.endsWith('\n')) {
           blot.insertAt(0, value.slice(0, -1), def);
         } else {
@@ -114,7 +114,7 @@ class Scroll extends ScrollBlot {
         }
       } else {
         const embed = this.scroll.create(value, def);
-        this.appendChild(embed);
+        this?.appendChild(embed);
       }
     } else {
       super.insertAt(index, value, def);
@@ -127,7 +127,7 @@ class Scroll extends ScrollBlot {
       const wrapper = this.scroll.create(
         this.statics.defaultChild.blotName,
       ) as Parent;
-      wrapper.appendChild(blot);
+      wrapper?.appendChild(blot);
       super.insertBefore(wrapper, ref);
     } else {
       super.insertBefore(blot, ref);
@@ -242,7 +242,7 @@ class Scroll extends ScrollBlot {
 }
 
 export interface ScrollConstructor {
-  new (
+  new(
     registry: Registry,
     domNode: HTMLDivElement,
     options: { emitter: Emitter },
